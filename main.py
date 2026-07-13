@@ -1,7 +1,6 @@
 import sys
 from PyQt6.QtCore import QUrl, Qt
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
-                             QWidget, QLineEdit, QPushButton, QTabBar, QStackedWidget, QSpacerItem, QSizePolicy)
+from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLineEdit, QPushButton, QTabBar, QStackedWidget, QSpacerItem, QSizePolicy
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 
 
@@ -13,7 +12,7 @@ class MorphBrowser(QMainWindow):
 
         self.is_dark_mode = True
 
-        # --- 1. TABS BAR ---
+        # TABS BAR
         self.tab_bar = QTabBar()
         self.tab_bar.setDocumentMode(True)
         self.tab_bar.setTabsClosable(True)
@@ -25,7 +24,7 @@ class MorphBrowser(QMainWindow):
         self.new_tab_btn.setObjectName("new_tab_btn")
         self.new_tab_btn.setFixedSize(28, 28)
         self.new_tab_btn.setToolTip("New Tab")
-        self.new_tab_btn.clicked.connect(lambda: self.add_new_tab(QUrl("https://google.com"), "New Tab"))
+        self.new_tab_btn.clicked.connect(lambda: self.add_new_tab(QUrl("https://google.com"), "New Tab")) # You can replace it with your favorite one
 
         tab_layout = QHBoxLayout()
         tab_layout.setContentsMargins(10, 8, 10, 0)
@@ -34,10 +33,10 @@ class MorphBrowser(QMainWindow):
         tab_layout.addWidget(self.new_tab_btn)
         tab_layout.addSpacerItem(QSpacerItem(20, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum))
 
-        # --- 2. STACKED WIDGET ---
+        # STACKED WIDGET
         self.stack = QStackedWidget()
 
-        # --- 3. NAVIGATION BAR ---
+        # NAVIGATION BAR
         self.address_bar = QLineEdit()
         self.address_bar.setPlaceholderText("Search or enter web address")
         self.address_bar.returnPressed.connect(self.navigate_to_url)
@@ -55,7 +54,7 @@ class MorphBrowser(QMainWindow):
         self.reload_btn.setFixedSize(30, 30)
         self.reload_btn.clicked.connect(lambda: self.current_browser().reload() if self.current_browser() else None)
 
-        # ВИПРАВЛЕНО: Використовуємо класичний Юнікод (☀) замість кольорового емодзі
+
         self.theme_btn = QPushButton("☀")
         self.theme_btn.setObjectName("theme_btn")
         self.theme_btn.setFixedSize(30, 30)
@@ -72,7 +71,7 @@ class MorphBrowser(QMainWindow):
         nav_layout.addWidget(self.address_bar)
         nav_layout.addWidget(self.theme_btn)
 
-        # --- ОБ'ЄДНУЄМО ВСЕ ---
+
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
@@ -87,7 +86,7 @@ class MorphBrowser(QMainWindow):
         self.add_new_tab(QUrl("https://google.com"), "Google")
         self.apply_theme()
 
-    # --- TAB LOGIC ---
+    # TAB LOGIC
 
     def add_new_tab(self, qurl, label="New Tab"):
         browser = QWebEngineView()
@@ -129,7 +128,7 @@ class MorphBrowser(QMainWindow):
                 if browser.url():
                     self.address_bar.setText(browser.url().toString())
 
-    # --- NAVIGATION & THEME LOGIC ---
+    # NAVIGATION & THEME LOGIC
 
     def apply_theme(self):
         if self.is_dark_mode:
@@ -163,7 +162,7 @@ class MorphBrowser(QMainWindow):
                 QTabBar::tab:hover:!selected { background-color: #333333; }
             """
         else:
-            self.theme_btn.setText("☾")  # Класичний місяць
+            self.theme_btn.setText("☾")
             stylesheet = """
                 QMainWindow { background-color: #e2e8f0; }
                 QWidget { background-color: #ffffff; }
