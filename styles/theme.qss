@@ -1,13 +1,9 @@
-/* styles/theme.qss */
-
-/* Головний контейнер вікна */
 QWidget#MainContainer {
     background-color: #16161A;
     border-radius: 12px;
     border: 1px solid #24242B;
 }
 
-/* Верхня кастомна панель */
 QWidget#TitleBar {
     background-color: transparent;
 }
@@ -20,7 +16,6 @@ QLabel#TitleLabel {
     letter-spacing: 1px;
 }
 
-/* Кнопки керування вікном (Світлофор) */
 QPushButton#close_btn { background-color: #FF5F56; border-radius: 7px; border: none; outline: none; }
 QPushButton#close_btn:hover { background-color: #FF746D; }
 QPushButton#close_btn:pressed { background-color: #E0443B; }
@@ -33,7 +28,6 @@ QPushButton#max_btn { background-color: #27C93F; border-radius: 7px; border: non
 QPushButton#max_btn:hover { background-color: #4ADD60; }
 QPushButton#max_btn:pressed { background-color: #1EA32E; }
 
-/* Панель навігації */
 QWidget#NavBar {
     background-color: transparent;
 }
@@ -51,7 +45,6 @@ QPushButton.nav_btn:pressed {
     background-color: #2D2D38;
 }
 
-/* Видимий адресний рядок */
 QLineEdit#address_bar {
     background-color: #0F0F11;
     color: #FFFFFE;
@@ -68,10 +61,9 @@ QLineEdit#address_bar:hover {
 }
 QLineEdit#address_bar:focus {
     background-color: #0F0F11;
-    border: 1px solid #7F5AF0; /* Яскравий фіолетовий фокус */
+    border: 1px solid #7F5AF0;
 }
 
-/* Менеджер Вкладок */
 QWidget#TabsManager {
     background-color: transparent;
 }
@@ -94,7 +86,7 @@ QTabBar::tab {
     font-size: 13px;
     font-weight: 500;
 }
-/* Активна вкладка тепер сильно виділяється */
+
 QTabBar::tab:selected {
     background-color: #24242B;
     color: #FFFFFE;
@@ -128,12 +120,11 @@ QPushButton#new_tab_btn:hover {
     color: white;
 }
 
-/* Яскрава неонова смужка прогресу */
 QProgressBar#ProgressBar {
     border: none;
     background-color: transparent;
 }
 QProgressBar#ProgressBar::chunk {
-    background-color: #7F5AF0; /* Фіолетовий неон */
+    background-color: #7F5AF0;
     border-radius: 1px;
 }

@@ -7,7 +7,6 @@ from core.browser_engine import MorphWebEngine
 
 class TabsManager(QWidget):
     url_changed = pyqtSignal(str)
-    # Нові сигнали для прогрес-бару
     load_started = pyqtSignal()
     load_progress = pyqtSignal(int)
     load_finished = pyqtSignal()
@@ -55,7 +54,6 @@ class TabsManager(QWidget):
         engine.urlChanged.connect(lambda qurl, e=engine: self._update_url_if_active(e, qurl))
         engine.iconChanged.connect(lambda icon, e=engine: self._update_tab_icon(e, icon))
 
-        # Підключаємо сигнали завантаження від рушія
         engine.loadStarted.connect(lambda e=engine: self._on_load_started(e))
         engine.loadProgress.connect(lambda p, e=engine: self._on_load_progress(e, p))
         engine.loadFinished.connect(lambda ok, e=engine: self._on_load_finished(e))
@@ -84,7 +82,6 @@ class TabsManager(QWidget):
                 self.stack.setCurrentWidget(engine)
                 if engine.url():
                     self.url_changed.emit(engine.url().toString())
-                # Оновлюємо смужку, якщо вкладка ще вантажиться
                 if engine.is_loading:
                     self.load_started.emit()
                     self.load_progress.emit(engine.current_progress)
@@ -109,7 +106,6 @@ class TabsManager(QWidget):
                     self.tab_bar.setTabIcon(i, icon)
                 break
 
-    # Обробники завантаження
     def _on_load_started(self, engine):
         if engine == self.current_engine():
             self.load_started.emit()

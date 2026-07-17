@@ -4,7 +4,6 @@ from PyQt6.QtWidgets import QMainWindow, QVBoxLayout, QWidget, QProgressBar
 from PyQt6.QtGui import QIcon
 from PyQt6.QtGui import QIcon, QPixmap
 
-# Імпортуємо наші UI компоненти
 from ui.titlebar import CustomTitleBar
 from ui.navbar import NavBar
 from ui.tabs import TabsManager
@@ -36,23 +35,19 @@ class MorphBrowser(QMainWindow):
             self.setWindowIcon(QIcon(cropped_pixmap))
 
 
-        # Безрамкове вікно
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
 
-        # Ініціалізація компонентів
         self.title_bar = CustomTitleBar(self)
         self.navbar = NavBar(self)
         self.tabs = TabsManager(self)
 
-        # СТВОРЮЄМО PROGRESS BAR
         self.progress_bar = QProgressBar()
         self.progress_bar.setObjectName("ProgressBar")
         self.progress_bar.setFixedHeight(2)
         self.progress_bar.setTextVisible(False)
         self.progress_bar.hide()
 
-        # Підключення сигналів навігації
         self.navbar.on_back.connect(lambda: self.tabs.current_engine().back() if self.tabs.current_engine() else None)
         self.navbar.on_forward.connect(
             lambda: self.tabs.current_engine().forward() if self.tabs.current_engine() else None)
@@ -63,12 +58,10 @@ class MorphBrowser(QMainWindow):
 
         self.tabs.url_changed.connect(self.navbar.update_url)
 
-        # Підключаємо анімацію завантаження
         self.tabs.load_started.connect(self._show_progress)
         self.tabs.load_progress.connect(self.progress_bar.setValue)
         self.tabs.load_finished.connect(self.progress_bar.hide)
 
-        # Збірка інтерфейсу
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
@@ -86,7 +79,6 @@ class MorphBrowser(QMainWindow):
 
         self.load_stylesheet()
 
-        # Відкриваємо стартову сторінку
         self.tabs.add_tab("https://google.com", "Google")
 
     def _show_progress(self):

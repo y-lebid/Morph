@@ -18,7 +18,6 @@ class NavBar(QWidget):
         base_dir = os.path.dirname(os.path.dirname(__file__))
         icons_dir = os.path.join(base_dir, "resources", "icons")
 
-        # Buttons created with class selectors for QSS (QPushButton.nav_btn)
         self.back_btn = self._create_btn(os.path.join(icons_dir, "back.svg"))
         self.back_btn.clicked.connect(self.on_back.emit)
 
@@ -28,13 +27,11 @@ class NavBar(QWidget):
         self.reload_btn = self._create_btn(os.path.join(icons_dir, "reload.svg"))
         self.reload_btn.clicked.connect(self.on_reload.emit)
 
-        # Address Bar
         self.address_bar = QLineEdit()
         self.address_bar.setObjectName("address_bar")  # Targets QLineEdit#address_bar in QSS
         self.address_bar.setPlaceholderText("Search or enter web address...")
         self.address_bar.returnPressed.connect(self._handle_return)
 
-        # Setup Layout
         layout = QHBoxLayout()
         layout.setContentsMargins(20, 10, 20, 10)
         layout.setSpacing(12)
@@ -49,7 +46,7 @@ class NavBar(QWidget):
 
     def _create_btn(self, icon_path):
         btn = QPushButton()
-        btn.setProperty("class", "nav_btn")  # Add class attribute for clean styling
+        btn.setProperty("class", "nav_btn")
         btn.setIcon(QIcon(icon_path))
         btn.setFixedSize(36, 36)
         btn.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
