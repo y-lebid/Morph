@@ -1,0 +1,139 @@
+/* styles/theme.qss */
+
+/* Головний контейнер вікна */
+QWidget#MainContainer {
+    background-color: #16161A;
+    border-radius: 12px;
+    border: 1px solid #24242B;
+}
+
+/* Верхня кастомна панель */
+QWidget#TitleBar {
+    background-color: transparent;
+}
+
+QLabel#TitleLabel {
+    color: #94A1B2;
+    font-weight: 600;
+    font-size: 13px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Кнопки керування вікном (Світлофор) */
+QPushButton#close_btn { background-color: #FF5F56; border-radius: 7px; border: none; outline: none; }
+QPushButton#close_btn:hover { background-color: #FF746D; }
+QPushButton#close_btn:pressed { background-color: #E0443B; }
+
+QPushButton#min_btn { background-color: #FFBD2E; border-radius: 7px; border: none; outline: none; }
+QPushButton#min_btn:hover { background-color: #FFD05B; }
+QPushButton#min_btn:pressed { background-color: #E0A01E; }
+
+QPushButton#max_btn { background-color: #27C93F; border-radius: 7px; border: none; outline: none; }
+QPushButton#max_btn:hover { background-color: #4ADD60; }
+QPushButton#max_btn:pressed { background-color: #1EA32E; }
+
+/* Панель навігації */
+QWidget#NavBar {
+    background-color: transparent;
+}
+
+QPushButton.nav_btn {
+    background-color: transparent;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+QPushButton.nav_btn:hover {
+    background-color: #24242B;
+}
+QPushButton.nav_btn:pressed {
+    background-color: #2D2D38;
+}
+
+/* Видимий адресний рядок */
+QLineEdit#address_bar {
+    background-color: #0F0F11;
+    color: #FFFFFE;
+    border: 1px solid #24242B;
+    border-radius: 18px;
+    padding: 0 20px;
+    font-size: 13px;
+    height: 36px;
+    outline: none;
+}
+QLineEdit#address_bar:hover {
+    background-color: #131317;
+    border: 1px solid #2D2D38;
+}
+QLineEdit#address_bar:focus {
+    background-color: #0F0F11;
+    border: 1px solid #7F5AF0; /* Яскравий фіолетовий фокус */
+}
+
+/* Менеджер Вкладок */
+QWidget#TabsManager {
+    background-color: transparent;
+}
+
+QTabBar {
+    background: transparent;
+    border: 0px;
+    outline: none;
+}
+QTabBar::tab {
+    background-color: transparent;
+    color: #94A1B2;
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin: 4px 2px;
+    min-width: 130px;
+    max-width: 220px;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    font-weight: 500;
+}
+/* Активна вкладка тепер сильно виділяється */
+QTabBar::tab:selected {
+    background-color: #24242B;
+    color: #FFFFFE;
+    border: 1px solid #2D2D38;
+    outline: none;
+}
+QTabBar::tab:hover:!selected {
+    background-color: #1C1C22;
+    color: #FFFFFE;
+}
+
+QTabBar::close-button {
+    background: transparent;
+    padding: 2px;
+}
+QTabBar::close-button:hover {
+    background-color: #FF5F56;
+    border-radius: 4px;
+}
+
+QPushButton#new_tab_btn {
+    background-color: transparent;
+    color: #94A1B2;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    font-size: 18px;
+}
+QPushButton#new_tab_btn:hover {
+    background-color: #24242B;
+    color: white;
+}
+
+/* Яскрава неонова смужка прогресу */
+QProgressBar#ProgressBar {
+    border: none;
+    background-color: transparent;
+}
+QProgressBar#ProgressBar::chunk {
+    background-color: #7F5AF0; /* Фіолетовий неон */
+    border-radius: 1px;
+}
